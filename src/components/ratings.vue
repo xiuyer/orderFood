@@ -151,8 +151,10 @@ export default {
   },
   mounted () {
     /* eslint-disable no-new */
-    new Scroll(this.$refs.ratingsWrapper, {
-      click: true
+    this.$nextTick(() => {
+      new Scroll(this.$refs.ratingsWrapper, {
+        click: true
+      })
     })
   }
 }

@@ -85,17 +85,19 @@ export default {
     star
   },
   mounted () {
-    /* eslint-disable no-new */
-    new Scroll(this.$refs.sellerWrapper, {
-      click: true
-    })
-    // 给需要横向滚动的div设置宽度,这样创建的滚动插件才会生效,
-    // 因为图片加载速度慢,所以该div一开始不会被图片撑开宽度
-    this.$refs.sellerImg.style.width = 120 * this.seller.pics.length + 'px'
-    new Scroll(this.$refs.imgWrapper, {
-      scrollX: true,
-      scrollY: false,
-      click: true
+    this.$nextTick(() => {
+      /* eslint-disable no-new */
+      new Scroll(this.$refs.sellerWrapper, {
+        click: true
+      })
+      // 给需要横向滚动的div设置宽度,这样创建的滚动插件才会生效,
+      // 因为图片加载速度慢,所以该div一开始不会被图片撑开宽度
+      this.$refs.sellerImg.style.width = 120 * this.seller.pics.length + 'px'
+      new Scroll(this.$refs.imgWrapper, {
+        scrollX: true,
+        scrollY: false,
+        click: true
+      })
     })
   }
 }

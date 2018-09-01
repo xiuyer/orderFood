@@ -62,18 +62,19 @@ export default {
     }
   },
   mounted () {
-    console.log('seller', this.seller)
     axios.get('/static/data.json').then(res => {
       this.goods = res.data.goods
     })
-    // 商品滚动
-    this.goodsSc = new Scroll(this.$refs.foodsWrapper, {
-      click: true,
-      probeType: 1
-    })
-    // 左侧菜单滚动
-    this.menuSc = new Scroll(this.$refs.menuWrapper, {
-      click: true
+    this.$nextTick(() => {
+      // 商品滚动
+      this.goodsSc = new Scroll(this.$refs.foodsWrapper, {
+        click: true,
+        probeType: 1
+      })
+      // 左侧菜单滚动
+      this.menuSc = new Scroll(this.$refs.menuWrapper, {
+        click: true
+      })
     })
     // -------------------------------------- START -----------------------------------------------
     // *******************滚动插件文档中提示会派发滚动时触发的事件,实际上并没有派发****************
